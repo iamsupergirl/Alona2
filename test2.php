@@ -35,4 +35,5 @@ foreach ($mas2 as $line) {
     }
     echo "<br>";
 }
+
 ?>
