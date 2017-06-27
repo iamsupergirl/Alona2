@@ -1,4 +1,5 @@
 <?php
+/*Yanushkevich Aliona*/
 $mas=array (
     array (1,0,0),
     array (2,1,0),
