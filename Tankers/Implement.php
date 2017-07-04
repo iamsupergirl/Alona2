@@ -32,13 +32,13 @@ public $shell=null;
     {
         $this->status = $status;
     }
-    public function ChargeStatus(){
+    public function chargeStatus(){
         if($this->status){
             return'Заряжено';
         }
-        else 'Разряжено';
+        else return'Разряжено';
     }
-    public function Shot($shell){
+    public function shot($shell){
         if($this->$shell!=null){
             echo'Выстрел';
         }

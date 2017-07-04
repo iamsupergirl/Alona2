@@ -19,7 +19,7 @@ private $rangeOfDistance=0;
 
 
     /**
-     * @return int
+     * @return array
      */
     public function getCrew()
     {
@@ -49,10 +49,10 @@ private $rangeOfDistance=0;
     {
         $this->rangeOfDistance = $rangeOfDistance;
     }
-    public function SetHumanInCrew($human){
+    public function setHumanInCrew($human){
         $this->crew[]=$human;
     }
-    public function Сonsist(){
+    public function consist(){
         return'Состав экипажа:'.$this->crew;
     }
 }
