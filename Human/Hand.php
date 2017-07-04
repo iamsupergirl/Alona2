@@ -72,12 +72,17 @@ class Hand
      * @var bool
      */
     private $handAvailability=true;
-    public function Availability(){
+    public function availability(){
         if($this->handAvailability==false){
             return'Руки отсутствуют';
         }
+        else return'';
     }
-public function ArmsLong($long){
+
+    /**
+     * @param $long
+     */
+public function armsLong($long){
         $this->longArms=$this->longArms+$long;
 }
 }

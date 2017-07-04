@@ -68,10 +68,10 @@ class Tongue
     {
         $this->widthOfTongue = $widthOfTongue;
     }
-public function TongueColor(){
+public function tongueColor(){
         return'Цвет языка:'.$this->colorOfTongue;
 }
-public function TongueLength(){
+public function tongueLength(){
     $this->lengthOfTongue=$this->lengthOfTongue+5;
 }
 }

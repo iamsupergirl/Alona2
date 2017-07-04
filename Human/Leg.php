@@ -68,7 +68,7 @@ class Leg
     {
         $this->footSize = $footSize;
     }
-    public function SizeOfShoes(){
+    public function sizeOfShoes(){
         if($this->footSize<38 && $this->footSize>35){
             return'Маленький размер ноги';
         }
@@ -77,7 +77,7 @@ class Leg
         }
         else return'Большой размер ноги';
     }
-public function LegVolume($volumeLeg){
+public function legVolume($volumeLeg){
         $this->volumeOfLeg=$this->volumeOfLeg+$volumeLeg;
 }
 }

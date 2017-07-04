@@ -68,18 +68,23 @@ class Bladder
     {
         $this->weightOfBladder = $weightOfBladder;
     }
-public function Fullness(){
+public function fullness(){
         if ($this->volumeBladder){
             return'Мочевой пузырь наполнен';
         }
         else return'Мочевой пузырь пуст';
 }
-public function Fullness2(){
+
+    /**
+     * @return string
+     */
+public function fullness2(){
     if ($this->wallThickness<=3){
         return'Мочевой пузырь наполнен';
     }
     else if($this->wallThickness>3 && $this->wallThickness<12){
         return'Мочевой пузырь пуст';
     }
+    else return'';
 }
 }

@@ -68,14 +68,14 @@ class Stomach
     {
         $this->fulness = $fulness;
     }
-    public function FullnessOfStomach(){
+    public function fullnessOfStomach(){
         if ($this->fulness){
             return 'Желудок наполнен';
         }
         else return'Желудок пуст';
 
     }
-    public function VolumeOfStomach($volumeOfStomach){
+    public function volumeOfStomach($volumeOfStomach){
         $this->volumeOfStomach=$this->volumeOfStomach+$volumeOfStomach;
     }
 

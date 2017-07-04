@@ -76,10 +76,10 @@ class Brain
     /**
      * @return int
      */
-    public function AddMass(){
+    public function addMass(){
        return $this->mass=$this->mass+10;
     }
-public function AddIq($IqChange){
+public function addIq($IqChange){
         $this->iq=$this->iq+$IqChange;
 }
 }

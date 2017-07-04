@@ -116,10 +116,10 @@ class Body
     {
         $this->bonresWeight = $bonresWeight;
     }
-    public function VolumeBlood(){
+    public function volumeBlood(){
         return $this->bloodVolume;
     }
-    public function WeightBones($bonesWeight){
+    public function weightBones($bonesWeight){
         $this->bonresWeight=$this->bonresWeight+$bonesWeight;
     }
 

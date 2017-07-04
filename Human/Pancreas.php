@@ -9,7 +9,7 @@
 class Pancreas
 {
     /**
-     * @var float
+     * @var Float12
      */
     private $glycemia=0.0;
     /**
@@ -22,7 +22,7 @@ class Pancreas
     private $weightOfPancreas=0;
 
     /**
-     * @return float
+     * @return Float12
      */
     public function getGlycemia()
     {
@@ -30,7 +30,7 @@ class Pancreas
     }
 
     /**
-     * @param float $glycemia
+     * @param Float12 $glycemia
      */
     public function setGlycemia($glycemia)
     {
@@ -68,7 +68,7 @@ class Pancreas
     {
         $this->weightOfPancreas = $weightOfPancreas;
     }
-public function LevelOfGlycemia(){
+public function levelOfGlycemia(){
         if ($this->glycemia>5.5){
             return 'Нарушение толерантности к глюкозе';
         }
@@ -77,7 +77,7 @@ public function LevelOfGlycemia(){
         }
         else return'Гипогликемия';
 }
-public function PancreasWeight(){
+public function pancreasWeight(){
     $this->weightOfPancreas=$this->weightOfPancreas+15;
 }
 }

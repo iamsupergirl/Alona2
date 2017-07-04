@@ -68,7 +68,7 @@ private $jawSize=0;
     {
         $this->jawSize = $jawSize;
     }
-public function TeethNumber(){
+public function teethNumber(){
         if($this->numberOfTeeth=32){
             return'Норма';
         }
@@ -77,7 +77,7 @@ public function TeethNumber(){
         }
         else return'Неполное количество зубов';
 }
-public function TeethColor(){
+public function teethColor(){
     return'Цвет зубов'.$this->colorOfTeeth;
 }
 }

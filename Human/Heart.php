@@ -68,7 +68,7 @@ class Heart
     {
         $this->reductions = $reductions;
     }
-public function HeartReductions(){
+public function heartReductions(){
         if ($this->reductions>=90){
             return 'Тахикардия';
         }
@@ -77,7 +77,7 @@ public function HeartReductions(){
             else return 'Нормосистолия';
 
 }
-public function HeartWeight($weightOfHeart){
+public function heartWeight($weightOfHeart){
     $this->weightOfHeart=$this->weightOfHeart+$weightOfHeart;
 }
 }

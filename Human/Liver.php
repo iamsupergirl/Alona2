@@ -68,13 +68,13 @@ class Liver
     {
         $this->liverQill = $liverQill;
     }
-    public function LengthAndQill(){
+    public function lengthAndQill(){
         if($this->liverLength>=18 && $this->liverQill>=23){
             return'Печень увеличена';
         }
         else return'Возможно, вариант нормы';
     }
-    public function LiverWeight ($weightOfLiver){
+    public function liverWeight ($weightOfLiver){
         $this->weightOfLiver=$this->weightOfLiver+$weightOfLiver;
     }
 

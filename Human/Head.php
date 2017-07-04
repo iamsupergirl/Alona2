@@ -113,14 +113,14 @@ private $typeOfSkin=' ';
     {
         $this->typeOfSkin = $typeOfSkin;
     }
-public function CircleOfHead($HeadCircle){
+public function circleOfHead($HeadCircle){
         $this->circle=$this->circle+$HeadCircle;
 }
 
     /**
      * @return string
      */
-public function HairAndType (){
+public function hairAndType (){
     return 'волосы:'. $this->hair.'; тип кожи'.$this->typeOfSkin;
 }
 

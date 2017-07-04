@@ -68,10 +68,10 @@ class Lips
     {
         $this->colorOfLips = $colorOfLips;
     }
-public function LipsColor(){
+public function lipsColor(){
         return'Цвет губ:'.$this->colorOfLips;
 }
-public function LipsSize($sizeOfLips){
+public function lipsSize($sizeOfLips){
     $this->sizeOfLips=$this->sizeOfLips+$sizeOfLips;
 }
 }

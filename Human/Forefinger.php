@@ -68,10 +68,10 @@ class Forefinger extends Finger
     {
         $this->numberOfColors = $numberOfColors;
     }
-public function LacquerType(){
+public function lacquerType(){
         return'Тип лака:'.$this->typeOfLacquer;
 }
-public function ColorNumber(){
+public function colorNumber(){
     if($this->numberOfColors==1){
         return'Однотонный';
     }

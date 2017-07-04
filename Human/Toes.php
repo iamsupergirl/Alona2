@@ -68,12 +68,17 @@ class Toes extends Finger
     {
         $this->lengthOfThumb = $lengthOfThumb;
     }
-    public function PresenceOfFingers(){
+    public function presenceOfFingers(){
         if($this->numberOfFingers==false){
             return'Пальцев нет';
         }
+        else return'';
     }
-public function ThumbWidth($widthThumpFoot){
+
+    /**
+     * @param $widthThumpFoot
+     */
+public function thumbWidth($widthThumpFoot){
 $this->widthOfThumb=$this->widthOfThumb+$widthThumpFoot;
 }
 }

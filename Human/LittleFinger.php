@@ -68,10 +68,10 @@ public $fingerColor=' ';
     {
         $this->fingerColor = $fingerColor;
     }
-    public function SizelittleFinger($sizeLittle){
+    public function sizelittleFinger($sizeLittle){
         $this->fingerSize=$this->fingerSize+$sizeLittle;
     }
-    public function ColorOfLittleFinger(){
+    public function colorOfLittleFinger(){
         return'Цвет пальца:'.$this->fingerColor;
     }
 }

@@ -17,7 +17,7 @@ class Eyes
      */
     private $slit=' ';
     /**
-     * @var float
+     * @var Float12
      */
     private $visual=1.0;
 
@@ -54,7 +54,7 @@ class Eyes
     }
 
     /**
-     * @return float
+     * @return Float12
      */
     public function getVisual()
     {
@@ -62,7 +62,7 @@ class Eyes
     }
 
     /**
-     * @param float $visualAcuity
+     * @param Float12 $visualAcuity
      */
     public function setVisual($visual)
     {
@@ -72,7 +72,7 @@ class Eyes
 public function visualAcuity($acuity){
         $this->visual=$this->visual+$acuity;
 }
-public function ColorAndSlit(){
+public function colorAndSlit(){
     return 'цвет глаз'. $this->color.'; разрез газ'.$this->slit;
 }
 }

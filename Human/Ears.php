@@ -68,14 +68,24 @@ class Ears
     {
         $this->presenceOfEars = $presenceOfEars;
     }
-public function EarsPresence(){
+
+    /**
+     * @return bool
+     */
+public function earsPresence(){
         if($this->presenceOfEars==false){
             return'Ушей нет';
         }
+        else return'';
 }
-public function EarsNumber(){
+
+    /**
+     * @return bool
+     */
+public function earsNumber(){
     if ($this->numberOfEars<1 && $this->numberOfEars>2){
         return'Патология';
     }
+    else return '';
 }
 }

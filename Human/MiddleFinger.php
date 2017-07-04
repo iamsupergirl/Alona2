@@ -68,10 +68,10 @@ class MiddleFinger extends Finger
     {
         $this->typeOfRings = $typeOfRings;
     }
-public function NailColor(){
+public function nailColor(){
         return 'Цвет ногтя:'.$this->colorOfNail;
 }
-public function NailLength(){
+public function nailLength(){
     $this->lengthOfTheNail=$this->lengthOfTheNail+5;
 }
 }

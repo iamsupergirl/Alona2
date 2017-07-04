@@ -68,12 +68,17 @@ class Appendix
     {
         $this->weightOfAppendix = $weightOfAppendix;
     }
-    public function PresenceOfAppendix(){
+    public function presenceOfAppendix(){
         if ($this->appendixLength==false && $this->thicknessOfAppendix==false && $this->weightOfAppendix==false){
             return'Аппендикс был удален';
         }
+        else return'';
     }
-public function LengthOfAppendix(){
+
+    /**
+     * @param int
+     */
+public function lengthOfAppendix(){
         $this->appendixLength=$this->appendixLength+10;
 }
 }

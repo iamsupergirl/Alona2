@@ -68,10 +68,10 @@ class RingFinger extends Finger
     {
         $this->ringColor = $ringColor;
     }
-    public function SizeOfRing($ringSize){
+    public function sizeOfRing($ringSize){
         $this->ringSize=$this->ringSize+$ringSize;
     }
-    public function ColorOfRing(){
+    public function colorOfRing(){
         return 'Цвет кольца:'.$this->ringColor;
     }
 

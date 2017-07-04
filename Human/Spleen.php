@@ -68,12 +68,17 @@ class Spleen
     {
         $this->widthOfSpleen = $widthOfSpleen;
     }
-public function PresenceOfTheSpleen(){
+public function presenceOfTheSpleen(){
         if($this->spleenSpine==false && $this->weightOfSpleen==false && $this->widthOfSpleen==false){
             return'Селезенка была удалена';
         }
+        else return'';
 }
-public function SpleenWeight($weightSpleen){
+
+    /**
+     * @param $weightSpleen
+     */
+public function spleenWeight($weightSpleen){
     $this->weightOfSpleen=$this->weightOfSpleen+$weightSpleen;
 }
 }

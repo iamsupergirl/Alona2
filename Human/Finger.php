@@ -68,10 +68,10 @@ class Finger
     {
         $this->lengthOfFinger = $lengthOfFinger;
     }
-    public function FirstPhalanxLength ($firstLength){
+    public function firstPhalanxLength ($firstLength){
         $this->lengthOfTheFirstPhalanx=$this->lengthOfTheFirstPhalanx+$firstLength;
     }
-    public function SecondPhalanxLength($secondLength){
+    public function secondPhalanxLength($secondLength){
         $this->lengthOfTheSecondPhalanx=$this->lengthOfTheSecondPhalanx+$secondLength;
     }
 

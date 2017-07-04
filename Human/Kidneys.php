@@ -68,13 +68,13 @@ class Kidneys
     {
         $this->weightOfKidnays = $weightOfKidnays;
     }
-public function WhichKidney(){
+public function whichKidney(){
         if($this->sizeOfKidneys1>$this->sizeOfKidneys2){
             return'Размер левой почки:'.$this->sizeOfKidneys1;
         }
         else return 'Размер левой почки:'.$this->sizeOfKidneys2;
 }
-public function KidneysWeight(){
+public function kidneysWeight(){
     $this->weightOfKidnays=$this->weightOfKidnays+10;
 }
 }

@@ -16,6 +16,10 @@ class Lungs
      * @var int
      */
     private $lobe=0;
+    /**
+     * @var int
+     */
+    private $volumeOfLungs=0;
 
     /**
      * @return int
@@ -64,12 +68,9 @@ class Lungs
     {
         $this->volumeOfLungs = $volumeOfLungs;
     }
-    /**
-     * @var int
-     */
-    private $volumeOfLungs=0;
 
-    public function LobeOfLungs(){
+
+    public function lobeOfLungs(){
         if ($this->lobe=2){
             return 'Это левое легкое';
         }
@@ -79,7 +80,7 @@ class Lungs
         }
         else return'Данные неверны';
     }
-    public function Rate(){
+    public function rate(){
         if ($this->breathingRate>=60){
             return 'Тахипноэ';
         }

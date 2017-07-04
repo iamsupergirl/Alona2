@@ -68,10 +68,10 @@ private $widthOfNose=0;
     {
         $this->widthOfNose = $widthOfNose;
     }
-    public function ShapeAndLength(){
+    public function shapeAndLength(){
         return'Форма носа:'.$this->noseShape.'и длинна носа:'.$this->lengthOfNose;
     }
-    public function NoseLength($lengthNose){
+    public function noseLength($lengthNose){
         $this->lengthOfNose=$this->lengthOfNose+$lengthNose;
     }
 }

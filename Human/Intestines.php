@@ -68,12 +68,17 @@ class Intestines
     {
         $this->weightOfIntestine = $weightOfIntestine;
     }
-    public function BowelFilling(){
+    public function bowelFilling(){
         if ($this->volumeOfIntestine){
             return'Кишечник наполнен';
         }
+        else return'';
     }
-public function IntestinesWeight ($massOfIntestine){
+
+    /**
+     * @param $massOfIntestine
+     */
+public function intestinesWeight ($massOfIntestine){
         $this->weightOfIntestine=$this->weightOfIntestine+$massOfIntestine;
 }
 }

@@ -68,10 +68,10 @@ private $angleOfAFinger=0;
     {
         $this->angleOfAFinger = $angleOfAFinger;
     }
-    public function WidthOfNails($nailsWidth){
+    public function widthOfNails($nailsWidth){
         $this->nailsWidth=$this->nailsWidth+$nailsWidth;
     }
-    public function FingerAngle($angleOfAThumb){
+    public function fingerAngle($angleOfAThumb){
         $this->angleOfAFinger=$this->angleOfAFinger+$angleOfAThumb;
     }
 }

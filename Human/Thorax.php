@@ -68,10 +68,10 @@ private $typeOfThorax=' ';
     {
         $this->typeOfThorax = $typeOfThorax;
     }
-public function ThoraxType(){
+public function thoraxType(){
         return 'тип грудной клетки:'. $this->typeOfThorax;
 }
-public function ThoraxVolume(){
+public function thoraxVolume(){
     $this->volumeThorax=$this->volumeThorax+10;
 }
 }
