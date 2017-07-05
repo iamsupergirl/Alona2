@@ -89,6 +89,4 @@ class Human
         $this->theWeight = $theWeight;
     }
 
-
-
 }
