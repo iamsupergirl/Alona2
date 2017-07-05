@@ -6,6 +6,7 @@
  * Date: 4.7.17
  * Time: 22.20
  */
+include'Human.php';
 class Room
 {
     /**

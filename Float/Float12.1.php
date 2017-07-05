@@ -7,6 +7,7 @@
  * Time: 22.05
  */
 include 'Room.php';
+include 'Human.php';
 class Float12
 {
     /**
