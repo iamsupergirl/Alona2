@@ -108,7 +108,6 @@ class Room
             return'В комнате:'.count($this->human).'человек.Свет горит';
         }
         else return 'В комнате темно и нет людей.';
-
     }
 }
 

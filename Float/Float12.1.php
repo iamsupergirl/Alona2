@@ -40,4 +40,5 @@ class Float12
             }
             return 'Количество комнат:' .count ($this->rooms).'Информация о комнате:'.$report;
         }
+
 }
