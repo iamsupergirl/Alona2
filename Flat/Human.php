@@ -1,4 +1,5 @@
 <?php
+namespace dom;
 
 /**
  * Created by PhpStorm.
@@ -6,8 +7,9 @@
  * Date: 5.7.17
  * Time: 10.37
  */
-class Human
+ class Human
 {
+
     /**
      * @var int
      */
@@ -24,6 +26,19 @@ class Human
      * @var string
      */
     private $status=' ';
+    /**
+     * @var string
+     */
+    private $name='';
+
+    /**
+     * Human constructor.
+     * @param $name
+     */
+    function __construct($name)
+    {
+        $this->name=$name;
+    }
 
     /**
      * @return string

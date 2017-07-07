@@ -1,4 +1,5 @@
 <?php
+namespace dom;
 
 /**
  * Created by PhpStorm.
@@ -8,15 +9,21 @@
  */
 include 'Room.php';
 include 'Human.php';
-class Float12
+
+class Flat12
 {
     /**
      * @var array
      */
     private $rooms;
+
+    /**
+     * Flat12 constructor.
+     * @param array $rooms
+     */
     public function __construct($rooms)
     {
-        $this->rooms = [];
+        $this->rooms = $rooms;
     }
 
     public function addRoom()
@@ -41,4 +48,20 @@ class Float12
             return 'Количество комнат:' .count ($this->rooms).'Информация о комнате:'.$report;
         }
 
+
 }
+
+$room1=new Room(0,2);
+$room1->addHuman('Human2');
+$room1->status();
+
+$room2=new Room(1,1);
+$room2->addHuman('New Human');
+$room2->status();
+$room2->setDoor(0);
+$room2->delHuman(1);
+
+$flat=new Flat12([$room1,$room2]);
+    $flat->infoRoom();
+
+

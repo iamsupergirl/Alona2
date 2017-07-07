@@ -1,5 +1,5 @@
 <?php
-
+namespace dom;
 /**
  * Created by PhpStorm.
  * User: helen
@@ -35,7 +35,7 @@ class Room
     }
 
     /**
-     * @param int $human
+     * @param array $human
      */
     public function setHuman($human)
     {
@@ -60,7 +60,7 @@ class Room
     }
 
     /**
-     * @return int
+     * @return bool
      */
     public function getDoor()
     {
@@ -91,9 +91,13 @@ class Room
         $this->status = $status;
     }
 
-    public function addHuman()
+
+    public function addHuman($name)
     {
-        $this->human=new Human();
+        if ($this->door) {
+            $this->human=new Human($name);
+        }
+
         }
 
     public function delHuman($a)
