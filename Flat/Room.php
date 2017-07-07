@@ -1,5 +1,5 @@
 <?php
-namespace dom;
+use dom\Human;
 /**
  * Created by PhpStorm.
  * User: helen
@@ -16,7 +16,7 @@ class Room
     /**
      * @var bool
      */
-    private $door = 0;
+    private $door = 1;
     /**
      * @var int
      */
@@ -107,6 +107,10 @@ class Room
         }
 
     }
+
+    /**
+     * @return string
+     */
     public function status(){
         if (count($this->human)){
             return'В комнате:'.count($this->human).'человек.Свет горит';

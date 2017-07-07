@@ -9,8 +9,7 @@ namespace dom;
  */
  class Human
 {
-
-    /**
+     /**
      * @var int
      */
     private $growth=0;

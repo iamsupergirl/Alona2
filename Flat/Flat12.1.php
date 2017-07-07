@@ -1,5 +1,4 @@
 <?php
-namespace dom;
 
 /**
  * Created by PhpStorm.
@@ -8,7 +7,7 @@ namespace dom;
  * Time: 22.05
  */
 include 'Room.php';
-include 'Human.php';
+//include 'Human.php';
 
 class Flat12
 {
@@ -39,13 +38,17 @@ class Flat12
 
 
     }
-        public function infoRoom()
+
+    /**
+     * @return string
+     */
+        public function informRoom()
         {
-            $report='';
+            $reports='';
             foreach ($this->rooms as $value){
-            $report=$report.$value->status;
+            $reports=$reports.($value->status());
             }
-            return 'Количество комнат:' .count ($this->rooms).'Информация о комнате:'.$report;
+            return 'Количество комнат: ' .count ($this->rooms).'Информация о комнате: '.$reports;
         }
 
 
@@ -53,15 +56,17 @@ class Flat12
 
 $room1=new Room(0,2);
 $room1->addHuman('Human2');
+
 $room1->status();
 
 $room2=new Room(1,1);
+$room2->setDoor(0);
 $room2->addHuman('New Human');
 $room2->status();
-$room2->setDoor(0);
+
 $room2->delHuman(1);
 
 $flat=new Flat12([$room1,$room2]);
-    $flat->infoRoom();
+    echo $flat->informRoom();
 
 
