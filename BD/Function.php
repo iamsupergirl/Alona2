@@ -281,9 +281,9 @@ function getFilmHeaderLink($title, $field) {
     return "<a href='/BD/Function.php?sort[field]=$field&sort[direction]=$sort_direction'>$title</a>";
 }
 
-//$count_pages = 50;/
-//$active = 3;/
-//$countShowPages = 5;
+$count_pages = 50;
+$active =  (empty($_GET['page']) ? 1 : intval($_GET['page']));
+$countShowPages = 5;
 $url = "/BD/Function.php";
 $urlPage = "/BD/Function.php?page=";
 if ($count_pages > 1) {
@@ -319,7 +319,7 @@ if ($count_pages > 1) {
 </form>
 
 <!-- Movies table. -->
-<table>
+<table class="table table-bordered table-hover table-condensed" >
 
     <tr>
         <th><?php echo getFilmHeaderLink('ID', 'id'); ?></th>
@@ -344,8 +344,12 @@ if ($count_pages > 1) {
 </table>
 
 <!--Block "Пагинация" Start"-->
-<head><link type="text/css" rel="stylesheet" href="/HTML/CSS/style.css"/>
+<head>
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="/HTML/CSS/style.css"/>
 <link type="text/css" rel="stylesheet" href="/BD/ForFunction.css"/>
+    <script src="/components/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="light-pagination" class="pagination">
@@ -353,10 +357,16 @@ if ($count_pages > 1) {
     <?php if ($active != 1){?>
     <ul>
         <li><a href="<?=$url?>" class="perv">&lt;&lt;</a></li>
-        <li><a href="<?php if ($active == 2) {?><?=$url?><?php } else { ?><?=$urlPage.($active - 1)?><?php } ?>" class="prev">&lt;</a></li>
+        <li><a href="<?php if ($active == 2) {?><?=$url?><?php }
+            else { ?><?=$urlPage.($active - 1)?><?php } ?>" class="prev">&lt;</a></li>
         <?php } ?>
-        <?php for ($i = $start; $i <= $end; $i++) { ?>
-            <?php if ($i == $active) { ?><span><?=$i?></span><?php } else { ?><a href="<?php if ($i == 1) { ?><?=$url?><?php } else { ?><?=$urlPage.$i?><?php } ?>"><?=$i?></a><?php } ?>
+        <?php
+        for ($i = $start; $i <= $end; $i++) { ?>
+            <?php
+            if ($i == $active) { ?><span><?=$i?></span><?php }
+            else { ?><a href="<?php
+            if ($i == 1) { ?><?=$url?><?php }
+            else { ?><?=$urlPage.$i?><?php } ?>"><?=$i?></a><?php } ?>
         <?php } ?>
         <?php if ($active != $count_pages) { ?>
 
