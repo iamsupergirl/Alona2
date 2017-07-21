@@ -281,10 +281,28 @@ function getFilmHeaderLink($title, $field) {
     return "<a href='/BD/Function.php?sort[field]=$field&sort[direction]=$sort_direction'>$title</a>";
 }
 
-?>
+//$count_pages = 50;/
+//$active = 3;/
+//$countShowPages = 5;
+$url = "/BD/Function.php";
+$urlPage = "/BD/Function.php?page=";
+if ($count_pages > 1) {
+    $left = $active - 1;
+    $right = $active + 1;
+    if ($left < ceil($countShowPages / 2))
+        $start = 1;
+    else $start = $active - ceil($countShowPages / 2);
+    $end = $start + $countShowPages - 1;
+    if ($end > $count_pages) {
+        $start -= ($end - $count_pages);
+        $end = $count_pages;
+        if ($start < 1) $start = 1;
+    }
+}
 
+?>
 <!-- Movies filters. -->
-<form action="Function.php" method="post">
+<form action="Function.php" method="post" xmlns="http://www.w3.org/1999/html">
     <label for="movie_title">Movie Title</label>
     <input type="text" id="movie_title" name="filter[movie_title]">
 
@@ -324,3 +342,28 @@ function getFilmHeaderLink($title, $field) {
     <?php endforeach; ?>
 
 </table>
+
+<!--Block "Пагинация" Start"-->
+<head><link type="text/css" rel="stylesheet" href="/HTML/CSS/style.css"/>
+<link type="text/css" rel="stylesheet" href="/BD/ForFunction.css"/>
+</head>
+<body>
+<div id="light-pagination" class="pagination">
+    <span>Страницы: </span>
+    <?php if ($active != 1){?>
+    <ul>
+        <li><a href="<?=$url?>" class="perv">&lt;&lt;</a></li>
+        <li><a href="<?php if ($active == 2) {?><?=$url?><?php } else { ?><?=$urlPage.($active - 1)?><?php } ?>" class="prev">&lt;</a></li>
+        <?php } ?>
+        <?php for ($i = $start; $i <= $end; $i++) { ?>
+            <?php if ($i == $active) { ?><span><?=$i?></span><?php } else { ?><a href="<?php if ($i == 1) { ?><?=$url?><?php } else { ?><?=$urlPage.$i?><?php } ?>"><?=$i?></a><?php } ?>
+        <?php } ?>
+        <?php if ($active != $count_pages) { ?>
+
+        <li><a href="<?=$urlPage.($active + 1)?>" class="next">&gt;</a></li>
+        <li><a href="<?=$urlPage.$count_pages?>" class="prev">&gt;&gt;</a></li>
+    </ul>
+</div>
+<?php } ?>
+<!--Block "Пагинация" End"-->
+</body>
