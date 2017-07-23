@@ -9,6 +9,18 @@ define('USER', 'root');
 define('PASS', 'root');
 define('DB', 'movie_task');
 
+?>
+
+<head>
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="/HTML/CSS/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/BD/ForFunction.css"/>
+    <script src="/components/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<?php
 $connect=mysqli_connect(HOST,USER,PASS,DB);
 if(!$connect){
     echo "Error:Unable to connect MySQL".PHP_EOL;
@@ -201,7 +213,23 @@ print_r($review);*/
 $eachByEach=$eachFilmByEach->fetch_all();
 print_r($eachByEach);*/
 
-$queryStr = 'Select * from Films';
+function getFilmHeaderLink($title, $field) {
+    $sort_direction = 'ASC';
+
+    // Inverse sort direction.
+    if (!empty($_GET['sort']['field']) &&
+        $_GET['sort']['field'] == $field &&
+        $_GET['sort']['direction'] == $sort_direction) {
+
+        $sort_direction = 'DESC';
+
+    }
+
+    return "<a href='/BD/Function.php?sort[field]=$field&sort[direction]=$sort_direction'>$title</a>";
+}
+
+$query_str = 'Select * from Films';
+$query_str_filter = '';
 
 // Handle filters.
 if (!empty($_POST['filter'])) {
@@ -226,7 +254,7 @@ if (!empty($_POST['filter'])) {
     }
 
     if (!empty($filters)) {
-        $queryStr .= ' where ' . implode(' AND ', $filters);
+        $query_str_filter .= ' where ' . implode(' AND ', $filters);
     }
 }
 
@@ -239,65 +267,37 @@ if (!empty($_GET['sort']['field'])) {
         $direction = $_GET['sort']['direction'];
     }
 
-    $queryStr .= " order by $field $direction";
+    $query_str .= " order by $field $direction";
 }
 
-$queryResult=$connect->query($queryStr);
-/*print_r($queryResult);*/
+$items_per_page = 3;
 
-/*$films=$queryResult->fetch_assoc();
-print_r($films);*/
-/*$films=$queryResult->fetch_object();
-print_r($films);*/
-/*$films=$queryResult->fetch_row();
-print_r($films);*/
-/*$films=$queryResult->fetch_field();
-print_r($films);*/
-/*$films=$queryResult->fetch_array();
-print_r($films);*/
-$films=$queryResult->fetch_all(MYSQLI_ASSOC);
-//print_r($films);
-
-/*$films=[];
-for ($i=0; $i< $queryResult->num_rows();$i++)
-{
-    $films[]=$queryResult->fetch_object();
-}
-$queryResult->fetch_all();
-print_r($queryResult);*/
-
-function getFilmHeaderLink($title, $field) {
-    $sort_direction = 'ASC';
-
-    // Inverse sort direction.
-    if (!empty($_GET['sort']['field']) &&
-        $_GET['sort']['field'] == $field &&
-        $_GET['sort']['direction'] == $sort_direction) {
-
-        $sort_direction = 'DESC';
-
-    }
-
-    return "<a href='/BD/Function.php?sort[field]=$field&sort[direction]=$sort_direction'>$title</a>";
+$active = 0;
+if (!empty($_GET['page'])) {
+    $active = max($active, intval($_GET['page']));
 }
 
-$count_pages = 50;
-$active =  (empty($_GET['page']) ? 1 : intval($_GET['page']));
-$countShowPages = 5;
+$items_offset = $active * $items_per_page;
+
+$count_movies = $connect->query("select count(*) from Films $query_str_filter")->fetch_row();
+$films = $connect->query("$query_str $query_str_filter limit $items_per_page offset $items_offset")->fetch_all(MYSQLI_ASSOC);
+
+$count_pages = ceil(intval(reset($count_movies)) / $items_per_page);
+
+$count_show_pages = 5;
 $url = "/BD/Function.php";
-$urlPage = "/BD/Function.php?page=";
+$url_page = "/BD/Function.php?page=";
+
+$left = $right = $start = $end = 0;
+
 if ($count_pages > 1) {
     $left = $active - 1;
     $right = $active + 1;
-    if ($left < ceil($countShowPages / 2))
-        $start = 1;
-    else $start = $active - ceil($countShowPages / 2);
-    $end = $start + $countShowPages - 1;
-    if ($end > $count_pages) {
-        $start -= ($end - $count_pages);
-        $end = $count_pages;
-        if ($start < 1) $start = 1;
-    }
+
+    $padding = ceil($count_show_pages / 2);
+
+    $start = max(0, $active - $padding);
+    $end = min($count_pages, $active + $padding);
 }
 
 ?>
@@ -344,36 +344,28 @@ if ($count_pages > 1) {
 </table>
 
 <!--Block "Пагинация" Start"-->
-<head>
-    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap-theme.min.css">
-    <link type="text/css" rel="stylesheet" href="/HTML/CSS/style.css"/>
-<link type="text/css" rel="stylesheet" href="/BD/ForFunction.css"/>
-    <script src="/components/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div id="light-pagination" class="pagination">
+<div id="light-pagination" class="pagination ">
     <span>Страницы: </span>
-    <?php if ($active != 1){?>
     <ul>
-        <li><a href="<?=$url?>" class="perv">&lt;&lt;</a></li>
-        <li><a href="<?php if ($active == 2) {?><?=$url?><?php }
-            else { ?><?=$urlPage.($active - 1)?><?php } ?>" class="prev">&lt;</a></li>
-        <?php } ?>
-        <?php
-        for ($i = $start; $i <= $end; $i++) { ?>
-            <?php
-            if ($i == $active) { ?><span><?=$i?></span><?php }
-            else { ?><a href="<?php
-            if ($i == 1) { ?><?=$url?><?php }
-            else { ?><?=$urlPage.$i?><?php } ?>"><?=$i?></a><?php } ?>
-        <?php } ?>
-        <?php if ($active != $count_pages) { ?>
 
-        <li><a href="<?=$urlPage.($active + 1)?>" class="next">&gt;</a></li>
-        <li><a href="<?=$urlPage.$count_pages?>" class="prev">&gt;&gt;</a></li>
+        <?php if ($left >= 0): ?>
+            <li><a href="Function.php?page=0" class="btn btn-default"><<</a></li>
+            <li><a href="Function.php?page=<?php echo $left; ?>" class="btn btn-default"><</a></li>
+        <?php endif; ?>
+
+        <?php for ($i = $start; $i < $end; $i++): ?>
+            <li class="<?php echo $active == $i ? 'active' : ''; ?>">
+                <a href="Function.php?page=<?php echo $i; ?>" class="btn btn-default"><?php echo $i + 1; ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($right < $count_pages): ?>
+            <li><a href="Function.php?page=<?php echo $right; ?>" class="btn btn-default">></a></li>
+            <li><a href="Function.php?page=<?php echo $count_pages - 1; ?>" class="btn btn-default">>></a></li>
+        <?php endif; ?>
+
     </ul>
 </div>
-<?php } ?>
 <!--Block "Пагинация" End"-->
+
 </body>
