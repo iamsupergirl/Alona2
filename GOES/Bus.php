@@ -139,25 +139,36 @@ WHERE Station.id=2");
 function getNumber()
 {
     $connect = mysqli_connect(HOST, USER, PASS, DB);
-    $numberStation = $connect->query("SELECT Station.id,title FROM Station WHERE latitude>7 AND longtitude>10");
-    $stationLatitude = $numberStation->fetch_all(MYSQLI_ASSOC);
-    print_r($stationLatitude);
+
+    $numberStation = $connect->query("SELECT * FROM Station");
+    $stations = $numberStation->fetch_all(MYSQLI_ASSOC);
+    foreach ($stations as &$station) {
+        $station['distance'] = sqrt( pow($station['latitude'] - 10,2 ) + pow($station['longtitude'] - 5,2));
+    }
+
+    usort($stations, function($a, $b) {
+        return $a['distance'] - $b['distance'];
+    });
+    $arrayStation = array_slice($stations,0,6,true);
+    print_r($arrayStation);
+
+    return $stations;
 }
-/*getNumber();*/
+getNumber();
 
 /*список остановок в радиусе( по latitude, longtitude, R)*/
  function inRadius()
 {
 
     $connect = mysqli_connect(HOST, USER, PASS, DB);
-    $r = 15;
+    $r = 5;
     $counter = 0;
     $result = array();
     $radius = $connect->query("SELECT * FROM Station");
     $radiusStation = $radius->fetch_all(MYSQLI_ASSOC);
     foreach ($radiusStation as $value) {
-        $distance = sqrt(pow($value['latitude'], 2) + pow($value['longtitude'], 2));
-        if ($distance < $r) {
+        $distance = sqrt(pow($value['latitude'] - 5, 2) + pow($value['longtitude'] - 15, 2));
+        if ($distance <= $r) {
             $result[] = $value;
         }
         $distance = 0;
