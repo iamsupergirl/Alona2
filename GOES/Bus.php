@@ -62,6 +62,7 @@ function getAllBus()
     $busList = $connect->query("SELECT * FROM Bus");
     $list = $busList->fetch_all(MYSQLI_ASSOC);
     print_r($list);
+    return $busList;
 }
 /*getAllRoutes();*/
  /*Список маршрутов системы*/
@@ -70,6 +71,7 @@ function getAllBus()
 $listRoutes=$connect->query("SELECT * FROM Routes");
 $routes=$listRoutes->fetch_all(MYSQLI_ASSOC);
 print_r($routes);
+return $listRoutes;
 }
 /*getAllRoutes();*/
 
@@ -80,6 +82,7 @@ function getAllStation()
     $listStation = $connect->query("SELECT id,title FROM Station");
     $station = $listStation->fetch_all(MYSQLI_ASSOC);
     print_r($station);
+    return $listStation;
 }
 /*getAllStation();*/
 
@@ -90,6 +93,7 @@ function getRoute()
     $bus = $connect->query("SELECT id_bus,rout FROM Routes WHERE id_bus=15");
     $busNumber = $bus->fetch_all(MYSQLI_ASSOC);
     print_r($busNumber);
+    return $bus;
 }
 /*getRoute();*/
 
@@ -101,6 +105,7 @@ function getListStation()
 LEFT JOIN Station ON StationArray.id=Station.id WHERE id_Bus=15");
     $chooseRoute = $stationRoute->fetch_all();
     print_r($chooseRoute);
+    return $stationRoute;
 }
 /*getListStation();*/
 
@@ -116,6 +121,7 @@ LEFT JOIN Bus_Station_Time ON Bus_Station_Time.id_busStation=Station.id
 WHERE StationArray.id_Bus=1 AND order_Station=1");
     $chooseOrder = $listChoose->fetch_all(MYSQLI_ASSOC);
     print_r($chooseOrder);
+    return $listChoose;
 }
 /*getTimetable();*/
 
@@ -127,9 +133,10 @@ function getList()
     $connect = mysqli_connect(HOST, USER, PASS, DB);
     $listStation = $connect->query("SELECT Station.id,title,StationArray.id_Bus FROM Station
 LEFT JOIN StationArray ON StationArray.id_Station=Station.id
-WHERE Station.id=2");
+WHERE Station.id=24");
     $stationLils = $listStation->fetch_all(MYSQLI_ASSOC);
     print_r($stationLils);
+    return $listStation;
 
 }
 /*getList();*/
@@ -154,7 +161,7 @@ function getNumber()
 
     return $stations;
 }
-getNumber();
+/*getNumber();*/
 
 /*список остановок в радиусе( по latitude, longtitude, R)*/
  function inRadius()
